@@ -1,58 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>TreeHotel</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script src="./js/script.js"></script>
+  <meta charset="UTF-8">
+  <title>TreeHotel</title>
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <script src="./js/script.js"></script>
 </head>
 
 <body>
   <div class="container">
     <nav class="navbar">
       <ul>
-          <li><a href="#Home">Home</a></li>
-          <li><a href="#Booking">Booking</a></li>
-          <li><a href="#Manage">Manage</a></li>
+        <li id="logo">TREE HOTEL</li>
+        <li><a href="#Home">Home</a></li>
+        <li><a href="#Booking">Booking</a></li>
+        <li><a href="#Manage">Manage</a></li>
       </ul>
     </nav>
-     <section id="Home"><div class="A">
-       <p></p></div>
-     </section>
-     <section id="Booking">
+    <section id="Home">
+      <div class="A">
+        <p></p>
+      </div>
+    </section>
+    <section id="Booking">
       <form>
-       <div class="B">
-        <fieldset>
+        <div class="Booking">
+          <fieldset>
             <legend>Guest </legend>
-            <label for= "username">Name: </label><input type="text" id="username" required autofocus placeholder="Full Name " pattern="[a-zA-z]{3,}" title="Please enter more than 3 letters" /><br /><br />
-            <label for= "email">Email: </label><input type="text" id="email" required placeholder="Email " pattern="[a-zA-z]{3,}@[[a-zA-z]{3,}[.]{1}[a-zA-z]{2,}" title="Please enter a valid email address" /><br /><br />
-            <label for= "phone">Phone: </label><input type="tel" id="phone" required placeholder="Mobile " pattern="[0-9]{4} [0-9]{2} [0-9]{2} [0-9]{2}" title="Please enter in monile in this format:##### ## ## ##" /><br /><br />
-            <label for="country">Country: </label>
-            <select id="country" required>
-              <option value="Sw">Sweden </option>
-              <option value="No">Norige </option>
-              <option value="Dk">Denmark </option>
-             </select><br /><br />
-             <label for="date">Chick in:   </label><input type="date" min="2019-11-28"><br /><br />
-            <label for="date">Chick out: </label><input type="date" min="2019-11-28"><br /><br />
-            <label for="roomType">Room Type: </label>
-            <select id="roomType" required>
-                    <option value="sn">Single Room </option>
-                    <option value="do">Double Romm </option>
-                    <option value="su">Suite </option><br />
-             </select>
-            <input type="button" onclick="submitForm()" value="Book NOW!" />
-         </fieldset>
+            <label for="username">Name: </label><input type="text" id="username" required placeholder="Full Name "
+              pattern="[a-zA-z]{3,}" title="Please enter more than 3 letters" /><br /><br />
+            <label for="email">Email: </label><input type="text" id="email" required placeholder="Email "
+              pattern="[a-zA-z]{3,}@[[a-zA-z]{3,}[.]{1}[a-zA-z]{2,}"
+              title="Please enter a valid email address" /><br /><br />
+            <label for="phone">Phone: </label><input type="tel" id="phone" required placeholder="Mobile "
+              pattern="[0-9]{4} [0-9]{2} [0-9]{2} [0-9]{2}"
+              title="Please enter in mobile in this format:##### ## ## ##" /><br /><br />
+            <label for="date">Check in: </label><input type="date" id="checkin" min="2019-11-28"><br /><br />
+            <label for="date">Check out: </label><input type="date" id="checkout" min="2019-11-28"><br /><br />
+            <label for="room">Room Type: </label>
+            <select id="room" required>
+              <option value="sn">Single Room </option>
+              <option value="db">Double Romm </option>
+              <option value="su">Suite </option><br />
+            </select><br /><br />
+            <input type="button" value="Book NOW" id="submit" onclick="submitForm()" />
+          </fieldset>
         </div>
       </form>
-     </section>
-        <section id="Manage">
-          <form><div class="list">
-            <input type="button" value="Get Data" onclick="populateGuestList()" />
-            <select id="guestList"></select>
-          </form>
-   </div>
-        </section>
-   </div>
+    </section>
+    <section id="Manage">
+      <form>
+        <div class="list">
+          <input type="button" value="Get Data" id="getd" onclick="populateGuestList()" />
+          <br />
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Check in</th>
+                <th>Check out</th>
+                <th>Room</th>
+              </tr>
+            </thead>
+            <tbody id="dataTableBody"></tbody>
+          </table>
+      </form>
+    </section>
+  </div>
 </body>
+
 </html>

@@ -1,55 +1,81 @@
 
 class HotelGuest {
-    constructor (){
-        this.username = '';
-        this.email='';
-        this.phone = '';
-        this.country = 'Sw';
-    }
+  constructor() {
+    this.username = '';
+    this.email = '';
+    this.phone = '';
+    this.checkin = '';
+    this.checkout = '';
+    this.room = 'Single Room';
+  }
 }
-// Define global variables
 
-  // Define Arry
-  var guests = [];
+var guests = [];
 
-  // Add Guest function
-  function submitForm(){
-    // Create new Instance of HotelGuest
-    var myGuest = new HotelGuest();
+function submitForm() {
 
-    // Access DOM elements
-    var usernameControl = document.getElementById('username');
-    var emailControl = document.getElementById('email');
-    var phoneControl = document.getElementById('phone');
-    var countryList = document.getElementById('country');
-    
-    // Assign DOM values to myGuest
-    myGuest.username =  usernameControl.value;
-    myGuest.email = emailControl.value;
-    myGuest.phone = phoneControl.value;
-    myGuest.country = countryList.value;
-
-    // Add to Array
-    guests.push(myGuest);
-
-    // Clear values
-    usernameControl.value = '';
-    emailControl.value = '';
-    phoneControl.value = '';
-    countryList.value = 'Sw';
+  var usernameControl = document.getElementById('username');
+  var emailControl = document.getElementById('email');
+  var phoneControl = document.getElementById('phone');
+  var checkinControl = document.getElementById('checkin');
+  var checkoutControl = document.getElementById('checkout');
+  var roomControl = document.getElementById('room');
 
 
-    alert('Guest added');
-    }
+  var myGuest = new HotelGuest();
 
-    // Fill Select Element
-    function populateGuestList(){
-      var guestListElement = document.getElementById('guestList');
+  myGuest.username = usernameControl.value;
+  myGuest.email = emailControl.value;
+  myGuest.phone = phoneControl.value;
+  myGuest.checkin = checkinControl.value;
+  myGuest.checkout = checkoutControl.value;
+  myGuest.room = roomControl.value;
 
-      for (index = 0 ; index < guests.length ; index++)
-      {
-        var option = document.createElement("option");
-        option.text = guests[index].username;
-        guestListElement.add(option);
-      }
-    }
+  guests.push(myGuest);
+
+  usernameControl.value = '';
+  emailControl.value = '';
+  phoneControl.value = '';
+  checkinControl.value = '';
+  checkoutControl.value = '';
+  roomControl.value = '';
+
+  alert('Guest added successfully');
+}
+
+function populateGuestList() {
+
+  var dataTableElement = document.getElementById('dataTableBody');
+
+  for (index = 0; index < guests.length; index++) {
+
+    var newRow = document.createElement("tr");
+
+    var newCell = document.createElement("td");
+    newCell.innerHTML = guests[index].username;
+    newRow.append(newCell);
+
+    newCell = document.createElement("td");
+    newCell.innerHTML = guests[index].email;
+    newRow.append(newCell);
+
+    newCell = document.createElement("td");
+    newCell.innerHTML = guests[index].phone;
+    newRow.append(newCell);
+
+    newCell = document.createElement("td");
+    newCell.innerHTML = guests[index].checkin;
+    newRow.append(newCell);
+
+    newCell = document.createElement("td");
+    newCell.innerHTML = guests[index].checkout;
+    newRow.append(newCell);
+
+    newCell = document.createElement("td");
+    newCell.innerHTML = guests[index].room;
+    newRow.append(newCell);
+
+    dataTableElement.append(newRow);
+
+  }
+}
