@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TreeHotel</title>
   <link rel="stylesheet" type="text/css" href="./css/style.css">
   <script src="./js/script.js"></script>
@@ -24,8 +25,8 @@
       </div>
     </section>
     <section id="Booking">
-      <form>
-        <div class="Booking">
+      <form method="GET" onsubmit="submitForm();">
+        <div class="bookingList">
           <fieldset>
             <legend>Guest </legend>
             <label for="username">Name: </label><input type="text" id="username" required placeholder="Full Name "
@@ -36,30 +37,33 @@
             <label for="phone">Phone: </label><input type="tel" id="phone" required placeholder="Mobile "
               pattern="[0-9]{4} [0-9]{2} [0-9]{2} [0-9]{2}"
               title="Please enter in mobile in this format:##### ## ## ##" /><br /><br />
+            <label for="memberId">Member ID: </label><input type="number" id="memberId" placeholder="Only for members "
+              pattern="Member[0-9]{5} " title="Please enter your membership ID" /><br /><br />
             <label for="date">Check in: </label><input type="date" id="checkin" min="2019-11-28"><br /><br />
             <label for="date">Check out: </label><input type="date" id="checkout" min="2019-11-28"><br /><br />
             <label for="room">Room Type: </label>
             <select id="room" required>
               <option value="sn">Single Room </option>
               <option value="db">Double Romm </option>
-              <option value="su">Suite </option><br />
+              <option value="su">Suite </option>
             </select><br /><br />
-            <input type="button" value="Book NOW" id="submit" onclick="submitForm()" />
+            <input type="submit" value="BOOK" id="submit" />
           </fieldset>
         </div>
       </form>
     </section>
     <section id="Manage">
       <form>
-        <div class="list">
+        <div class="ManageList">
           <input type="button" value="Get Data" id="getd" onclick="populateGuestList()" />
           <br />
-          <table>
+          <table id="guestTable">
             <thead>
               <tr>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Mobile</th>
+                <th>ID</th>
                 <th>Check in</th>
                 <th>Check out</th>
                 <th>Room</th>
@@ -67,6 +71,7 @@
             </thead>
             <tbody id="dataTableBody"></tbody>
           </table>
+        </div>
       </form>
     </section>
   </div>
